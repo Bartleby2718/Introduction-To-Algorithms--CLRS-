@@ -31,13 +31,13 @@ public:
 
     void pop();
 
-    bool empty();
+    bool empty() const;
 
     T top();
 };
 
 template<class T>
-StackUsingArray<T>::StackUsingArray(size_t capacity)
+StackUsingArray<T>::StackUsingArray(const size_t capacity)
 {
     array = new T[capacity];
     numElements = 0;
@@ -68,7 +68,7 @@ void StackUsingArray<T>::pop()
 }
 
 template<class T>
-void StackUsingArray<T>::push(T element)
+void StackUsingArray<T>::push(const T element)
 {
     if (numElements == capacity)
     {
@@ -99,7 +99,7 @@ T StackUsingArray<T>::top()
 }
 
 template<class T>
-bool StackUsingArray<T>::empty()
+bool StackUsingArray<T>::empty() const
 {
     return numElements == 0;
 }
