@@ -1,5 +1,6 @@
 #include <iostream>
 #include "QueueUsingArray.h"
+#include "QueueUsingStacks.h"
 #include "StackUsingArray.h"
 
 using namespace std;
@@ -104,9 +105,25 @@ int main()
     q2.enqueue(11);
     q2.print();
 
-    // TODO: queue detecting underflow/overflow
-    // TODO: deque using array
-    // TODO: queue using two stacks
-    // TODO: stack using two queues
+    // TODO: #10.1-5 deque using array
+    // #10.1-6 queue using two stacks
+    QueueUsingStacks<int> qs1;
+    try
+    {
+        qs1.dequeue();
+    } catch (out_of_range &e)
+    {
+        cerr << e.what() << endl;
+    }
+    qs1.enqueue(5);
+    qs1.enqueue(6);
+    qs1.enqueue(7);
+    qs1.dequeue();
+    qs1.dequeue();
+    qs1.enqueue(8);
+    qs1.dequeue();
+    qs1.dequeue();
+    // TODO: #10.1-7 stack using two queues
+    // TODO: #6.5-7 queue(enqueue, dequeue, getFront, isEmpty, clear), stack(push, pop, peek, isEmpty) using priority queue?
     return 0;
 }
