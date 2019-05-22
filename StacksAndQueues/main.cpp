@@ -1,5 +1,6 @@
 #include <iostream>
 #include "QueueUsingArray.h"
+#include "QueueUsingPriorityQueue.h"
 #include "QueueUsingStacks.h"
 #include "StackUsingArray.h"
 #include "StackUsingQueues.h"
@@ -184,6 +185,57 @@ void testStackUsingQueuesEdgeCases()
     }
 }
 
+void testQueueUsingPriorityQueuesEdgeCases()
+{
+    /** #6.5-7 queue using priority queue */
+    QueueUsingPriorityQueue<double> q;
+    try
+    {
+        q.front();
+    } catch (out_of_range &e)
+    {
+        cerr << e.what() << endl;
+    }
+    q.enqueue(0.7);
+    q.dequeue();
+    q.enqueue(0.8);
+    q.dequeue();
+    q.enqueue(0.1);
+    q.enqueue(0.2);
+    q.enqueue(0.3);
+    q.dequeue();
+    q.enqueue(0.4);
+    q.dequeue();
+    q.dequeue();
+    q.dequeue();
+    try
+    {
+        q.dequeue();
+    } catch (out_of_range &e)
+    {
+        cerr << e.what() << endl;
+    }
+}
+
+void testQueueUsingPriorityQueueOverflow()
+{
+    /** takes too much time unless the data model is LP32
+     *  In order to run this test, redefine currentIndex to be unsigned short
+     *  enqueue() and this method should be changed accordingly */
+    QueueUsingPriorityQueue<int> q;
+    for (unsigned i = 0; i < numeric_limits<unsigned>::max(); ++i)
+    {
+        q.enqueue(0);
+    }
+    try
+    {
+        q.enqueue(0);
+    } catch (out_of_range &e)
+    {
+        cerr << e.what() << endl;
+    }
+}
+
 int main()
 {
     testStackUsingArrayWithTextbookData();
@@ -193,6 +245,8 @@ int main()
     // TODO: #10.1-5 deque using array
     testQueueUsingStacksEdgeCases();
     testStackUsingQueuesEdgeCases();
-    // TODO: #6.5-7 queue(enqueue, dequeue, getFront, isEmpty, clear), stack(push, pop, peek, isEmpty) using priority queue?
+    // TODO: #6.5-7 stack(push, pop, peek, isEmpty) using priority queue
+    testQueueUsingPriorityQueuesEdgeCases();
+    //testQueueUsingPriorityQueueOverflow(); // read the docstring before uncommenting
     return 0;
 }
