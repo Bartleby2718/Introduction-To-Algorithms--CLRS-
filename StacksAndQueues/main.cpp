@@ -6,9 +6,9 @@
 
 using namespace std;
 
-int main()
+void testStackUsingArrayWithTextbookData()
 {
-    // #10.1-1 stack using array (default constructor)
+    /** #10.1-1 stack using array (default constructor) */
     StackUsingArray<int> s1;
     s1.push(4);
     s1.top();
@@ -22,8 +22,11 @@ int main()
     s1.top();
     s1.pop();
     s1.top();
+}
 
-    // #10.1-1 stack using array (parameterized constructor)
+void testStackUsingArrayEdgeCases()
+{
+    /** #10.1-1 stack using array (parameterized constructor) */
     StackUsingArray<int> s2(1);
     try
     {
@@ -48,8 +51,11 @@ int main()
     {
         cerr << e.what() << endl;
     }
+}
 
-    // #10.1-3 queue using array
+void testQueueUsingArrayWithTextbookData()
+{
+    /** #10.1-3 queue using array */
     QueueUsingArray<int> q1(3);
     q1.enqueue(4);
     q1.print();
@@ -63,8 +69,11 @@ int main()
     q1.print();
     q1.dequeue();
     q1.print();
+}
 
-    // #10.1-4 queue detecting overflow & underflow
+void testQueueUsingArrayEdgeCases()
+{
+    /** #10.1-4 queue detecting overflow & underflow */
     QueueUsingArray<int> q2(3);
     try
     {
@@ -105,9 +114,11 @@ int main()
     q2.print();
     q2.enqueue(11);
     q2.print();
+}
 
-    // TODO: #10.1-5 deque using array
-    // #10.1-6 queue using two stacks
+void testQueueUsingStacksEdgeCases()
+{
+    /** #10.1-6 queue using two stacks */
     QueueUsingStacks<int> qs1;
     try
     {
@@ -124,8 +135,18 @@ int main()
     qs1.enqueue(8);
     qs1.dequeue();
     qs1.dequeue();
+    try
+    {
+        qs1.front();
+    } catch (out_of_range &e)
+    {
+        cerr << e.what() << endl;
+    }
+}
 
-    // #10.1-7 stack using two queues
+void testStackUsingQueuesEdgeCases()
+{
+    /** #10.1-7 stack using two queues */
     StackUsingQueues<int> sq1;
     try
     {
@@ -161,6 +182,17 @@ int main()
     {
         cerr << e.what() << endl;
     }
+}
+
+int main()
+{
+    testStackUsingArrayWithTextbookData();
+    testStackUsingArrayEdgeCases();
+    testQueueUsingArrayWithTextbookData();
+    testQueueUsingArrayEdgeCases();
+    // TODO: #10.1-5 deque using array
+    testQueueUsingStacksEdgeCases();
+    testStackUsingQueuesEdgeCases();
     // TODO: #6.5-7 queue(enqueue, dequeue, getFront, isEmpty, clear), stack(push, pop, peek, isEmpty) using priority queue?
     return 0;
 }
