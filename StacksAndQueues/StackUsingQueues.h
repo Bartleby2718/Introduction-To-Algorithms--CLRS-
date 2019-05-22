@@ -20,7 +20,7 @@ class StackUsingQueues
 public:
     StackUsingQueues();
 
-    void push(const T &element);  // O(1)
+    void push(const T &element);  // O(1), but O(n) if the stack is already full
 
     void pop();  // O(n)
 

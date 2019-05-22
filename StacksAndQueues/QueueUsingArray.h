@@ -30,15 +30,15 @@ public:
 
     ~QueueUsingArray();
 
-    void enqueue(T element);
+    void enqueue(T element); // O(1) because the size is fixed
 
-    T dequeue();
+    T dequeue(); // O(1)
 
-    bool empty() const;
+    bool empty() const; // O(1)
 
-    bool full() const;
+    bool full() const; // O(1)
 
-    void print() const;
+    void print() const; // O(n)
 };
 
 template<class T>

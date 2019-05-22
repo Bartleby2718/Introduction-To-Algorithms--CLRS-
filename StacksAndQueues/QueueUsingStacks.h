@@ -18,13 +18,13 @@ class QueueUsingStacks
 public:
     QueueUsingStacks() = default;
 
-    void enqueue(const T &element);
+    void enqueue(const T &element);  // O(n)
 
-    void dequeue();
+    void dequeue();  // O(1)
 
-    bool empty() const;
+    bool empty() const;  // O(1)
 
-    T front() const;
+    T front() const;  // O(1)
 };
 
 template<class T>

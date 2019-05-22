@@ -27,13 +27,13 @@ public:
 
     ~StackUsingArray();
 
-    void push(T element);
+    void push(T element); // O(1) because the size is fixed
 
-    void pop();
+    void pop(); // O(1)
 
-    bool empty() const;
+    bool empty() const; // O(1)
 
-    T top();
+    T top(); // O(1)
 };
 
 template<class T>
