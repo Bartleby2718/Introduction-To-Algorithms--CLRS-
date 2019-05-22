@@ -2,6 +2,7 @@
 #include "QueueUsingArray.h"
 #include "QueueUsingStacks.h"
 #include "StackUsingArray.h"
+#include "StackUsingQueues.h"
 
 using namespace std;
 
@@ -123,7 +124,43 @@ int main()
     qs1.enqueue(8);
     qs1.dequeue();
     qs1.dequeue();
-    // TODO: #10.1-7 stack using two queues
+
+    // #10.1-7 stack using two queues
+    StackUsingQueues<int> sq1;
+    try
+    {
+        sq1.top();
+    } catch (out_of_range &e)
+    {
+        cerr << e.what() << endl;
+    }
+    sq1.push(1);
+    sq1.print();
+    sq1.push(2);
+    sq1.print();
+    sq1.push(3);
+    sq1.print();
+    sq1.push(4);
+    sq1.print();
+    sq1.pop();
+    sq1.print();
+    sq1.push(5);
+    sq1.print();
+    sq1.pop();
+    sq1.print();
+    sq1.pop();
+    sq1.print();
+    sq1.pop();
+    sq1.print();
+    sq1.pop();
+    sq1.print();
+    try
+    {
+        sq1.pop();
+    } catch (out_of_range &e)
+    {
+        cerr << e.what() << endl;
+    }
     // TODO: #6.5-7 queue(enqueue, dequeue, getFront, isEmpty, clear), stack(push, pop, peek, isEmpty) using priority queue?
     return 0;
 }
