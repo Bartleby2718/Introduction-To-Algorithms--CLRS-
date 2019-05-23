@@ -4,6 +4,7 @@
 #include "QueueUsingStacks.h"
 #include "StackUsingArray.h"
 #include "StackUsingQueues.h"
+#include "StackUsingPriorityQueue.h"
 
 using namespace std;
 
@@ -235,6 +236,35 @@ void testQueueUsingPriorityQueueOverflow()
     }
 }
 
+void testStackUsingPriorityQueue()
+{
+    StackUsingPriorityQueue<float> s;
+    try
+    {
+        s.top();
+    } catch (out_of_range &e)
+    {
+        cerr << e.what() << endl;
+    }
+    s.push(1.1);
+    s.top();
+    s.pop();
+    s.push(1.2);
+    s.top();
+    s.push(1.3);
+    s.top();
+    s.pop();
+    s.top();
+    s.pop();
+    try
+    {
+        s.pop();
+    } catch (out_of_range &e)
+    {
+        cerr << e.what() << endl;
+    }
+}
+
 int main()
 {
     testStackUsingArrayWithTextbookData();
@@ -247,5 +277,6 @@ int main()
     // TODO: #6.5-7 stack(push, pop, peek, isEmpty) using priority queue
     testQueueUsingPriorityQueuesEdgeCases();
     //testQueueUsingPriorityQueueOverflow(); // read the docstring before uncommenting
+    testStackUsingPriorityQueue();
     return 0;
 }
