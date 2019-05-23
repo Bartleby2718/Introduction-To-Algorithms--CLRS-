@@ -100,6 +100,7 @@ T QueueUsingPriorityQueue<T>::front() const
     {
         Node<T> node = pq.top();
         clog << "Element on the front: " << node.toString() << endl;
+        return node.element;
     }
 }
 
