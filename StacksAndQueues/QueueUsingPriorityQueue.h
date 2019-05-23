@@ -44,6 +44,8 @@ public:
     T front() const;  // O(1)
 
     bool empty() const;  // O(1)
+
+    friend void testQueueUsingPriorityQueueOverflow();
 };
 
 template<class T>

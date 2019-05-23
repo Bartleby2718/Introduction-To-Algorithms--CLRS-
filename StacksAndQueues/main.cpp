@@ -220,10 +220,9 @@ void testQueueUsingPriorityQueuesEdgeCases()
 void testQueueUsingPriorityQueueOverflow()
 {
     /** takes too much time unless the data model is LP32
-     *  In order to run this test, redefine currentIndex to be unsigned short
-     *  this method should be changed accordingly */
+     *  In order to run this test, redefine currentIndex to be unsigned short */
     QueueUsingPriorityQueue<int> q;
-    for (auto i = 0; i < numeric_limits<unsigned>::max(); ++i)
+    for (auto i = 0; i < numeric_limits<decltype(q.currentIndex)>::max(); ++i)
     {
         q.enqueue(0);
     }
