@@ -238,6 +238,7 @@ void testQueueUsingPriorityQueueOverflow()
 
 void testStackUsingPriorityQueue()
 {
+    /** #6.5-7 stack using priority queue */
     StackUsingPriorityQueue<float> s;
     try
     {
@@ -274,7 +275,6 @@ int main()
     // TODO: #10.1-5 deque using array
     testQueueUsingStacksEdgeCases();
     testStackUsingQueuesEdgeCases();
-    // TODO: #6.5-7 stack(push, pop, peek, isEmpty) using priority queue
     testQueueUsingPriorityQueuesEdgeCases();
     //testQueueUsingPriorityQueueOverflow(); // read the docstring before uncommenting
     testStackUsingPriorityQueue();
