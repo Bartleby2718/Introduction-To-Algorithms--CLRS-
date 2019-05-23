@@ -221,9 +221,9 @@ void testQueueUsingPriorityQueueOverflow()
 {
     /** takes too much time unless the data model is LP32
      *  In order to run this test, redefine currentIndex to be unsigned short
-     *  enqueue() and this method should be changed accordingly */
+     *  this method should be changed accordingly */
     QueueUsingPriorityQueue<int> q;
-    for (unsigned i = 0; i < numeric_limits<unsigned>::max(); ++i)
+    for (auto i = 0; i < numeric_limits<unsigned>::max(); ++i)
     {
         q.enqueue(0);
     }

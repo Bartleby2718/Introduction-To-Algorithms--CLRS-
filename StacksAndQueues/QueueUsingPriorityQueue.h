@@ -55,7 +55,7 @@ QueueUsingPriorityQueue<T>::QueueUsingPriorityQueue()
 template<class T>
 void QueueUsingPriorityQueue<T>::enqueue(const T &element)
 {
-    if (currentIndex >= numeric_limits<unsigned>::max())
+    if (currentIndex >= numeric_limits<decltype(currentIndex)>::max())
     {
         throw out_of_range("Unable to enqueue. Too many insertions without resetting index.");
     }
