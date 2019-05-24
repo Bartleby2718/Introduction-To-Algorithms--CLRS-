@@ -20,6 +20,10 @@ class DequeUsingArray
     int getNumElements() const;
 
 public:
+    // Initially, halfCapacity is expected on both ends
+    // However, if pushFront() & popBack() is repeated (or the other way around)
+    // up to 2 * halfCapacity can be inserted on the back
+    // and none can be inserted on the front
     explicit DequeUsingArray(int halfCapacity);
 
     DequeUsingArray();
@@ -93,7 +97,7 @@ void DequeUsingArray<T>::pushFront(const T &element)
 {
     if (head < 0)
     {
-        throw out_of_range("pushFront() failed. The deque is full on the front half.");
+        throw out_of_range("pushFront() failed. No more space on the front.");
     }
     else
     {
@@ -136,7 +140,7 @@ void DequeUsingArray<T>::pushBack(const T &element)
 {
     if (tail >= capacity)
     {
-        throw out_of_range("pushBack() failed. The deque is full on the back half.");
+        throw out_of_range("pushBack() failed. No more space on the back.");
     }
     else
     {

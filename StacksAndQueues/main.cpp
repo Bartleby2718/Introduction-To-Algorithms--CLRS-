@@ -332,6 +332,25 @@ void testDequeUsingArray()
     }
 }
 
+void testDequeUsingArrayZeroCapacity()
+{
+    DequeUsingArray<unsigned long> d(3);
+    d.pushFront(1);
+    d.popBack();
+    d.pushFront(1);
+    d.popBack();
+    d.pushFront(1);
+    d.popBack();
+    d.print();
+    try
+    {
+        d.pushFront(1);
+    } catch (out_of_range &e)
+    {
+        cout << e.what() << endl;
+    }
+}
+
 int main()
 {
     testStackUsingArrayWithTextbookData();
@@ -344,5 +363,6 @@ int main()
     testQueueUsingPriorityQueuesEdgeCases();
     // testQueueUsingPriorityQueueOverflow(); // read the docstring before uncommenting
     testStackUsingPriorityQueue();
+    testDequeUsingArrayZeroCapacity();
     return 0;
 }
