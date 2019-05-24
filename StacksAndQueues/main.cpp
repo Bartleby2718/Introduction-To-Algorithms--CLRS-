@@ -1,4 +1,5 @@
 #include <iostream>
+#include "DequeUsingArray.h"
 #include "QueueUsingArray.h"
 #include "QueueUsingPriorityQueue.h"
 #include "QueueUsingStacks.h"
@@ -266,17 +267,82 @@ void testStackUsingPriorityQueue()
     }
 }
 
+void testDequeUsingArray()
+{
+    /** #10.1-5 deque using array */
+    DequeUsingArray<unsigned long> d;
+    try
+    {
+        auto x = d[0];
+        cout << "Element at index 0: " << x << endl;
+    } catch (out_of_range &e)
+    {
+        cout << e.what() << endl;
+    }
+    d.pushFront(333333333333333);
+    d.back();
+    d.print();
+    d.pushFront(22222222222222222);
+    d.print();
+    d.pushFront(111111111111111);
+    cout << "Element at index 0: " << d[0] << endl;
+    cout << "Element at index 1: " << d[1] << endl;
+    cout << "Element at index 2: " << d[2] << endl;
+    try
+    {
+        auto y = d[3];
+        cout << "Element at index 3: " << y << endl;
+    } catch (out_of_range &e)
+    {
+        cout << e.what() << endl;
+    }
+    d.pushFront(0);
+    d.pushFront(0);
+    try
+    {
+        d.pushFront(0);
+    } catch (out_of_range &e)
+    {
+        cout << e.what() << endl;
+    }
+    d.popFront();
+    d.popFront();
+    d.print();
+    d.popBack();
+    d.print();
+    d.popFront();
+    d.print();
+    d.pushBack(44444444444444444);
+    d.print();
+    d.popFront();
+    d.print();
+    d.front();
+    d.popFront();
+    d.print();
+    d.pushBack(5555555555555555555);
+    d.front();
+    d.back();
+    d.popBack();
+    try
+    {
+        d.popFront();
+    } catch (out_of_range &e)
+    {
+        cout << e.what() << endl;
+    }
+}
+
 int main()
 {
     testStackUsingArrayWithTextbookData();
     testStackUsingArrayEdgeCases();
     testQueueUsingArrayWithTextbookData();
     testQueueUsingArrayEdgeCases();
-    // TODO: #10.1-5 deque using array
+    testDequeUsingArray();
     testQueueUsingStacksEdgeCases();
     testStackUsingQueuesEdgeCases();
     testQueueUsingPriorityQueuesEdgeCases();
-    //testQueueUsingPriorityQueueOverflow(); // read the docstring before uncommenting
+    // testQueueUsingPriorityQueueOverflow(); // read the docstring before uncommenting
     testStackUsingPriorityQueue();
     return 0;
 }
