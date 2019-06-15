@@ -1,5 +1,9 @@
+#include <iostream>
 #include <vector>
 #include "binaryTree.h"
+#include "binarySearchTree.hpp"
+
+using namespace std;
 
 int main()
 {
@@ -15,6 +19,30 @@ int main()
     bt.traversePreOrderNonRecursive();
     bt.traverseInOrderNonRecursive();
     bt.traversePostOrderNonRecursive();
+
+    BinarySearchTree bst;
+    for (int i:{4, 2, 6, 1, 3, 5, 7})
+    {
+        auto newNode = new BinarySearchTreeNode(i);
+        bst.insert(newNode);
+        bst.printMinimum();
+        bst.printMaximum();
+    }
+    for (int i = 0; i <= 8; ++i)
+    {
+        bst.find(i);
+    }
+
+    bst.traverseInOrder();
+
+    auto eight = new BinarySearchTreeNode(8);
+    BinarySearchTreeNode *beforeEight = bst.getPredecessor(eight);
+    cout << "bst.getPredecessor(eight): "
+         << ((beforeEight == nullptr) ? "Does not exist" : to_string(beforeEight->getValue())) << endl;
+
+    BinarySearchTreeNode *seven = bst.getMaximum();
+    BinarySearchTreeNode *afterSeven = bst.getSuccessor(seven);
+    cout << "bst.getSuccessor(seven): "
+         << ((afterSeven == nullptr) ? "Does not exist" : to_string(afterSeven->getValue())) << endl;
     return 0;
 }
-
