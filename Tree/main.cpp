@@ -33,6 +33,8 @@ int main()
         bst.find(i);
     }
 
+    /** #12.3-3 Tree Sort */
+    cout << "Tree sort on {4, 2, 6, 1, 3, 5, 7}: ";
     bst.traverseInOrder();
 
     auto eight = new BinarySearchTreeNode(8);
