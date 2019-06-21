@@ -16,7 +16,7 @@ using namespace std;
 template<class T>
 bool operator>(const Node<T> &lhs, const Node<T> &rhs)
 {
-    return !operator<(lhs, rhs);
+    return operator<(rhs, lhs);
 }
 
 template<class T>
