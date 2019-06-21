@@ -9,15 +9,9 @@
 #include <limits>
 #include <queue>
 #include <vector>
-#include "QueueUsingPriorityQueue.h"
+#include "PriorityQueueNode.hpp"
 
 using namespace std;
-
-template<class T>
-bool operator>(const Node<T> &lhs, const Node<T> &rhs)
-{
-    return operator<(rhs, lhs);
-}
 
 template<class T>
 class StackUsingPriorityQueue

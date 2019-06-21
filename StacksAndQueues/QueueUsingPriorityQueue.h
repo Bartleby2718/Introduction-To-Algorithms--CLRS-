@@ -7,26 +7,9 @@
 
 #include <iostream>
 #include <queue>
+#include "PriorityQueueNode.hpp"
 
 using namespace std;
-
-template<class T>
-struct Node
-{
-    unsigned index;
-    T element;
-
-    string toString()
-    {
-        return to_string(element) + "(index: " + to_string(index) + ")";
-    }
-};
-
-template<class T>
-bool operator<(const Node<T> &lhs, const Node<T> &rhs)
-{
-    return lhs.index < rhs.index;
-}
 
 template<class T>
 class QueueUsingPriorityQueue
