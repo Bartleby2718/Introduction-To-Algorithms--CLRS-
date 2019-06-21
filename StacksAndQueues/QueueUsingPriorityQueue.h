@@ -25,14 +25,13 @@ struct Node
 template<class T>
 bool operator<(const Node<T> &lhs, const Node<T> &rhs)
 {
-    // note the reversed operator to support minimum priority queue
-    return lhs.index > rhs.index;
+    return lhs.index < rhs.index;
 }
 
 template<class T>
 class QueueUsingPriorityQueue
 {
-    priority_queue<Node<T>> pq;
+    priority_queue<Node<T>, vector<Node<T>>, greater<Node<T>>> pq; // minimum priority queue
     unsigned currentIndex;
 public:
     QueueUsingPriorityQueue();

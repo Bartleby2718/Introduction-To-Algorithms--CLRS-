@@ -22,7 +22,7 @@ bool operator>(const Node<T> &lhs, const Node<T> &rhs)
 template<class T>
 class StackUsingPriorityQueue
 {
-    priority_queue<Node<T>, vector<Node<T>>, greater<Node<T>>> pq;
+    priority_queue<Node<T>> pq; // maximum priority queue
     unsigned currentIndex;
 public:
     StackUsingPriorityQueue();
