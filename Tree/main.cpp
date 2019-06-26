@@ -2,6 +2,7 @@
 #include <vector>
 #include "binaryTree.h"
 #include "binarySearchTree.hpp"
+#include "BstWithSuccessor.hpp"
 
 using namespace std;
 
@@ -46,5 +47,15 @@ int main()
     BinarySearchTreeNode *afterSeven = bst.getSuccessor(seven);
     cout << "bst.getSuccessor(seven): "
          << ((afterSeven == nullptr) ? "Does not exist" : to_string(afterSeven->getValue())) << endl;
+
+    /** #12.3-5 successor instead of parent */
+    BstWithSuccessor bst2;
+    bst2.insert1Through7();
+    bst2.traverseInOrder();
+    for (int i:{0, 1, 2, 3, 4, 5, 6, 7, 8})
+    {
+        cout << i << ((bst2.search(i) == nullptr) ? " not" : "") << " found." << endl;
+    }
+    bst2.testGetPredecessor();
     return 0;
 }
