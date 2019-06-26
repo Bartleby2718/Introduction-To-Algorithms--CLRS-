@@ -41,12 +41,64 @@ void BinarySearchTree::insert(BinarySearchTreeNode *newNode)
 
 void BinarySearchTree::transplant(BinarySearchTreeNode *node1, BinarySearchTreeNode *node2)
 {
-    // TODO
+    if (node1 == root)
+    {
+        if (node2 == node2->parent->left)
+        {
+            node2->parent->left = nullptr;
+        }
+        else if (node2 == node2->parent->right)
+        {
+            node2->parent->right = nullptr;
+        }
+        node2->parent = nullptr;
+        root = node2;
+    }
+    else // node1 has a parent
+    {
+        if (node1 == node1->parent->left)
+        {
+            node1->parent->left = node2;
+        }
+        else
+        {
+            node1->parent->right = node2;
+        }
+        node2->parent = node1->parent;
+    }
 }
 
 void BinarySearchTree::remove(int value)
 {
-    // TODO
+    // skip if value not found in the tree
+    BinarySearchTreeNode *nodeToRemove = search(value);
+    if (search(value) == nullptr)
+    {
+        return;
+    }
+
+    if (nodeToRemove->left == nullptr)
+    {
+        transplant(nodeToRemove, nodeToRemove->right);
+    }
+    else if (nodeToRemove->right == nullptr)
+    {
+        transplant(nodeToRemove, nodeToRemove->left);
+    }
+    else // both children exist
+    {
+        // replace with the smallest descendant (guaranteed to exist and has no left child)
+        BinarySearchTreeNode *smallest = nodeToRemove->right->getMinimum();
+        if (smallest->parent != nodeToRemove)
+        {
+            transplant(smallest, smallest->right);
+            smallest->right = nodeToRemove->right;
+            smallest->right->parent = smallest;
+        }
+        transplant(nodeToRemove, smallest);
+        smallest->left = nodeToRemove->left;
+        smallest->left->parent = smallest;
+    }
 }
 
 void BinarySearchTree::traverseInOrder() const
