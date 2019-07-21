@@ -95,6 +95,18 @@ void printChunkLengthsWithMemoizationBottomUp(const vector<int> &prices, int len
     cout << endl;
 }
 
+long getNthFibonacci(int n)
+{
+    long sequence[n + 1];
+    sequence[0] = 0;
+    sequence[1] = 1;
+    for (int i = 2; i < n + 1; ++i)
+    {
+        sequence[i] = sequence[i - 2] + sequence[i - 1];
+    }
+    return sequence[n];
+}
+
 int main()
 {
     vector<int> prices = {
@@ -126,7 +138,10 @@ int main()
     end = clock();
     cout << double(end - begin) / CLOCKS_PER_SEC << endl;
 
-    /** 15.1-4 */
+    /** #15.1-4 Return the actual solution for rod cutting */
     printChunkLengthsWithMemoizationBottomUp(prices, length);
+
+    /** #15.1-5 Compute the Fibanocci number in O(n) */
+    cout << getNthFibonacci(10) << endl;
     return 0;
 }
